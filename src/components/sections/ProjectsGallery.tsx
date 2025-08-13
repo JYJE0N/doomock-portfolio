@@ -60,7 +60,7 @@ export default function ProjectsGallery() {
       category: "기획",
       description:
         "신규 스타트업을 위한 완전한 브랜드 아이덴티티 구축 프로젝트",
-      image: "/images/project1.jpg", // 실제 이미지로 교체
+      image: "/images/projects/project1.jpg",
       tags: ["브랜딩", "전략기획", "가이드라인"],
       year: "2024",
       client: "TechStart Inc.",
@@ -78,7 +78,7 @@ export default function ProjectsGallery() {
       category: "디자인",
       description:
         "사용자 경험을 중심으로 한 직관적인 모바일 앱 인터페이스 디자인",
-      image: "/images/project2.jpg", // 실제 이미지로 교체
+      image: "/images/projects/project2.jpg", // 실제 이미지로 교체
       tags: ["UI/UX", "모바일", "프로토타입"],
       year: "2024",
       client: "FoodDelivery Co.",
@@ -94,7 +94,7 @@ export default function ProjectsGallery() {
       title: "React 대시보드 개발",
       category: "개발",
       description: "실시간 데이터 분석을 위한 반응형 관리자 대시보드 구축",
-      image: "/images/project3.jpg", // 실제 이미지로 교체
+      image: "/images/projects/project3.jpg", // 실제 이미지로 교체
       tags: ["React", "TypeScript", "D3.js"],
       year: "2024",
       client: "DataAnalytics Pro",
@@ -110,7 +110,7 @@ export default function ProjectsGallery() {
       title: "브랜드 영상 콘텐츠",
       category: "컨텐츠",
       description: "브랜드 스토리텔링을 위한 감성적인 영상 콘텐츠 제작",
-      image: "/images/project4.jpg", // 실제 이미지로 교체
+      image: "/images/projects/project4.jpg", // 실제 이미지로 교체
       tags: ["영상제작", "스토리텔링", "브랜딩"],
       year: "2024",
       client: "Creative Agency",
@@ -126,7 +126,7 @@ export default function ProjectsGallery() {
       title: "E-commerce 웹사이트",
       category: "개발",
       description: "Next.js 기반의 고성능 온라인 쇼핑몰 구축",
-      image: "/images/project5.jpg", // 실제 이미지로 교체
+      image: "/images/projects/project5.jpg", // 실제 이미지로 교체
       tags: ["Next.js", "Stripe", "PostgreSQL"],
       year: "2023",
       client: "Fashion Brand",
@@ -142,7 +142,7 @@ export default function ProjectsGallery() {
       title: "브랜드 리뉴얼 프로젝트",
       category: "디자인",
       description: "기존 브랜드의 현대적 재해석과 비주얼 시스템 구축",
-      image: "/images/project6.jpg", // 실제 이미지로 교체
+      image: "/images/projects/project6.jpg", // 실제 이미지로 교체
       tags: ["리브랜딩", "로고디자인", "가이드라인"],
       year: "2023",
       client: "Traditional Company",
