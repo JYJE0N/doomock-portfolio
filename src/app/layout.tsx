@@ -160,47 +160,6 @@ export default function RootLayout({
         <ThemeProvider>
           <div className="scroll-smooth">{children}</div>
         </ThemeProvider>
-
-        {/* 글로벌 스타일 */}
-        <style
-          jsx
-          global
-        >{`
-          html {
-            scroll-behavior: smooth;
-          }
-
-          /* 커스텀 스크롤바 - 라이트모드 */
-          ::-webkit-scrollbar {
-            width: 8px;
-          }
-
-          ::-webkit-scrollbar-track {
-            background: #f1f5f9;
-          }
-
-          ::-webkit-scrollbar-thumb {
-            background: #2563eb;
-            border-radius: 4px;
-          }
-
-          ::-webkit-scrollbar-thumb:hover {
-            background: #1d4ed8;
-          }
-
-          /* 다크모드 스크롤바 */
-          .dark ::-webkit-scrollbar-track {
-            background: #1e293b;
-          }
-
-          .dark ::-webkit-scrollbar-thumb {
-            background: #475569;
-          }
-
-          .dark ::-webkit-scrollbar-thumb:hover {
-            background: #64748b;
-          }
-        `}</style>
       </body>
     </html>
   );
