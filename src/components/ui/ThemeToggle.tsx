@@ -4,7 +4,18 @@ import { Sun, Moon } from "lucide-react";
 import { useTheme } from "@/contexts/ThemeContext";
 
 export default function ThemeToggle() {
-  const { theme, toggleTheme } = useTheme();
+  // 안전한 테마 훅 사용
+  let theme = "light";
+  let toggleTheme = () => {};
+
+  try {
+    const themeContext = useTheme();
+    theme = themeContext.theme;
+    toggleTheme = themeContext.toggleTheme;
+  } catch (error) {
+    console.log("ThemeToggle: Theme context not available");
+    return null; // 컨텍스트가 없으면 아무것도 렌더링하지 않음
+  }
 
   return (
     <button

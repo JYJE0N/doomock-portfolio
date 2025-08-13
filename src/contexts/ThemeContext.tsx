@@ -1,4 +1,3 @@
-// src/contexts/ThemeContext.tsx
 "use client";
 
 import { createContext, useContext, useEffect, useState } from "react";
@@ -10,24 +9,23 @@ interface ThemeContextType {
   toggleTheme: () => void;
 }
 
-const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
+const ThemeContext = createContext<ThemeContextType>({
+  theme: "light",
+  toggleTheme: () => {},
+});
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setTheme] = useState<Theme>("light");
   const [mounted, setMounted] = useState(false);
 
-  // 클라이언트 사이드에서만 테마 로드
   useEffect(() => {
     setMounted(true);
-    const savedTheme = localStorage.getItem("theme") as Theme | null;
-    const systemTheme = window.matchMedia("(prefers-color-scheme: dark)")
-      .matches
-      ? "dark"
-      : "light";
-    setTheme(savedTheme || systemTheme);
+    const savedTheme = localStorage.getItem("theme") as Theme;
+    if (savedTheme) {
+      setTheme(savedTheme);
+    }
   }, []);
 
-  // 테마 변경 시 DOM 클래스와 localStorage 업데이트
   useEffect(() => {
     if (mounted) {
       document.documentElement.classList.remove("light", "dark");
@@ -37,10 +35,9 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   }, [theme, mounted]);
 
   const toggleTheme = () => {
-    setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
+    setTheme((prev) => (prev === "light" ? "dark" : "light"));
   };
 
-  // 하이드레이션 문제 방지
   if (!mounted) {
     return <>{children}</>;
   }
@@ -54,8 +51,5 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
 export function useTheme() {
   const context = useContext(ThemeContext);
-  if (context === undefined) {
-    throw new Error("useTheme must be used within a ThemeProvider");
-  }
   return context;
 }

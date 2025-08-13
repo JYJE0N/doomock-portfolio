@@ -8,7 +8,18 @@ import ThemeToggle from "@/components/ui/ThemeToggle";
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const { theme } = useTheme();
+
+  // useTheme 훅을 try-catch로 감싸서 안전하게 사용
+  let theme = "light";
+  let themeError = false;
+
+  try {
+    const themeContext = useTheme();
+    theme = themeContext.theme;
+  } catch (error) {
+    themeError = true;
+    console.log("Theme context not available, using default light theme");
+  }
 
   // 스크롤 감지
   useEffect(() => {
@@ -81,8 +92,8 @@ export default function Header() {
               </a>
             ))}
 
-            {/* 테마 토글 버튼 */}
-            <ThemeToggle />
+            {/* 테마 토글 버튼 - 에러가 없을 때만 표시 */}
+            {!themeError && <ThemeToggle />}
 
             <button className="bg-blue-500 text-white px-6 py-2 rounded-full text-sm font-medium hover:bg-blue-600 transition-colors">
               Resume
@@ -91,7 +102,7 @@ export default function Header() {
 
           {/* 모바일 메뉴 버튼 & 테마 토글 */}
           <div className="md:hidden flex items-center space-x-2">
-            <ThemeToggle />
+            {!themeError && <ThemeToggle />}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className={`p-2 transition-colors ${getTextStyles()}`}
