@@ -77,7 +77,7 @@ export default function Contact() {
       icon: <MapPin className="w-6 h-6" />,
       title: "위치",
       value: "수원, 경기도",
-      description: "만남 상담 가능",
+      description: "대면 미팅 가능",
       action: "https://maps.google.com/?q=수원시",
       color: "bg-red-500",
     },
@@ -138,7 +138,7 @@ export default function Contact() {
         {/* 헤더 */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Let`&#39`s Work <span className="text-blue-400">Together</span>
+            Let Us Work <span className="text-blue-400">Together</span>
           </h2>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto">
             새로운 프로젝트나 협업 기회에 대해 이야기하고 싶어요. 언제든 편하게
