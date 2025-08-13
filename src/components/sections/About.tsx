@@ -111,7 +111,7 @@ export default function About() {
           <div className="space-y-6">
             <div className="bg-white p-8 rounded-2xl shadow-lg">
               <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                안녕하세요, doomock입니다!
+                안녕하세요, 전지윤 입니다!
               </h3>
               <div className="space-y-4 text-gray-600 leading-relaxed">
                 <p>
@@ -137,7 +137,7 @@ export default function About() {
               <div className="grid grid-cols-2 gap-4 text-sm">
                 <div>
                   <span className="text-gray-500">이름:</span>
-                  <p className="font-medium text-gray-900">doomock</p>
+                  <p className="font-medium text-gray-900">전지윤</p>
                 </div>
                 <div>
                   <span className="text-gray-500">전문분야:</span>
