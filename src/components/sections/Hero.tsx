@@ -134,7 +134,7 @@ export default function Hero() {
           <h1
             className={`text-5xl md:text-7xl font-bold mb-4 ${getGradientText()} transition-all duration-300`}
           >
-            doomock
+            두몫
           </h1>
         </div>
 
@@ -158,27 +158,29 @@ export default function Hero() {
             theme === "dark" ? "text-gray-300" : "text-white/90"
           } mb-12 max-w-2xl mx-auto leading-relaxed transition-colors duration-300`}
         >
-          사용자 경험을 중심으로 한 창의적이고 실용적인 디자인을 만듭니다.
+          사용자 경험을 중심으로 한 실용적인 디자인을 꿈꿉니다.
           <br className="hidden md:block" />
-          아름답고 기능적인 웹 경험을 선사하는 것이 저의 목표입니다.
+          간결하고 기능적인 웹 경험을 선사하는 것이 저의 목표입니다.
         </p>
 
         {/* 버튼들 */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
-          <button
+          <a
+            href="#projects"
             className={`${getButtonStyles(
               true
-            )} px-8 py-3 rounded-full font-semibold transition-all duration-300 hover:scale-105 shadow-lg`}
+            )} px-8 py-3 rounded-full font-semibold transition-all duration-300 hover:scale-105 shadow-lg inline-flex items-center justify-center`}
           >
             프로젝트 보기
-          </button>
-          <button
+          </a>
+          <a
+            href="#contact"
             className={`${getButtonStyles(
               false
-            )} px-8 py-3 rounded-full font-semibold transition-all duration-300 hover:scale-105`}
+            )} px-8 py-3 rounded-full font-semibold transition-all duration-300 hover:scale-105 inline-flex items-center justify-center`}
           >
             연락하기
-          </button>
+          </a>
         </div>
 
         {/* 소셜 링크 */}
