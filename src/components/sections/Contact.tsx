@@ -77,7 +77,7 @@ export default function Contact() {
       icon: <MapPin className="w-6 h-6" />,
       title: "위치",
       value: "수원, 경기도",
-      description: "대면 미팅 가능",
+      description: "만남 상담 가능",
       action: "https://maps.google.com/?q=수원시",
       color: "bg-red-500",
     },

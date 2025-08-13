@@ -15,6 +15,7 @@ import {
   Pause,
   Search,
 } from "lucide-react";
+import { useTheme } from "@/contexts/ThemeContext";
 
 export default function ProjectsGallery() {
   const [activeCategory, setActiveCategory] = useState("전체");
@@ -22,6 +23,7 @@ export default function ProjectsGallery() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const carouselRef = useRef(null);
+  const { theme } = useTheme();
 
   const categories = [
     {
@@ -58,8 +60,7 @@ export default function ProjectsGallery() {
       category: "기획",
       description:
         "신규 스타트업을 위한 완전한 브랜드 아이덴티티 구축 프로젝트",
-      image:
-        "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&h=600&fit=crop",
+      image: "/images/project1.jpg", // 실제 이미지로 교체
       tags: ["브랜딩", "전략기획", "가이드라인"],
       year: "2024",
       client: "TechStart Inc.",
@@ -77,8 +78,7 @@ export default function ProjectsGallery() {
       category: "디자인",
       description:
         "사용자 경험을 중심으로 한 직관적인 모바일 앱 인터페이스 디자인",
-      image:
-        "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&h=600&fit=crop",
+      image: "/images/project2.jpg", // 실제 이미지로 교체
       tags: ["UI/UX", "모바일", "프로토타입"],
       year: "2024",
       client: "FoodDelivery Co.",
@@ -94,8 +94,7 @@ export default function ProjectsGallery() {
       title: "React 대시보드 개발",
       category: "개발",
       description: "실시간 데이터 분석을 위한 반응형 관리자 대시보드 구축",
-      image:
-        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop",
+      image: "/images/project3.jpg", // 실제 이미지로 교체
       tags: ["React", "TypeScript", "D3.js"],
       year: "2024",
       client: "DataAnalytics Pro",
@@ -111,8 +110,7 @@ export default function ProjectsGallery() {
       title: "브랜드 영상 콘텐츠",
       category: "컨텐츠",
       description: "브랜드 스토리텔링을 위한 감성적인 영상 콘텐츠 제작",
-      image:
-        "https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=800&h=600&fit=crop",
+      image: "/images/project4.jpg", // 실제 이미지로 교체
       tags: ["영상제작", "스토리텔링", "브랜딩"],
       year: "2024",
       client: "Creative Agency",
@@ -128,8 +126,7 @@ export default function ProjectsGallery() {
       title: "E-commerce 웹사이트",
       category: "개발",
       description: "Next.js 기반의 고성능 온라인 쇼핑몰 구축",
-      image:
-        "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&h=600&fit=crop",
+      image: "/images/project5.jpg", // 실제 이미지로 교체
       tags: ["Next.js", "Stripe", "PostgreSQL"],
       year: "2023",
       client: "Fashion Brand",
@@ -145,8 +142,7 @@ export default function ProjectsGallery() {
       title: "브랜드 리뉴얼 프로젝트",
       category: "디자인",
       description: "기존 브랜드의 현대적 재해석과 비주얼 시스템 구축",
-      image:
-        "https://images.unsplash.com/photo-1634942537034-2531766767d1?w=800&h=600&fit=crop",
+      image: "/images/project6.jpg", // 실제 이미지로 교체
       tags: ["리브랜딩", "로고디자인", "가이드라인"],
       year: "2023",
       client: "Traditional Company",
@@ -199,18 +195,70 @@ export default function ProjectsGallery() {
     setIsAutoPlaying(true);
   };
 
+  // 테마별 스타일
+  const getSectionBg = () => {
+    return theme === "dark"
+      ? "bg-gradient-to-br from-gray-900 to-gray-800"
+      : "bg-gradient-to-br from-gray-50 to-blue-50";
+  };
+
+  const getTextPrimary = () => {
+    return theme === "dark" ? "text-white" : "text-gray-900";
+  };
+
+  const getTextSecondary = () => {
+    return theme === "dark" ? "text-gray-300" : "text-gray-600";
+  };
+
+  const getCategoryBg = (isActive: boolean) => {
+    if (isActive) return ""; // 그라데이션 유지
+    return theme === "dark"
+      ? "bg-gray-800 text-gray-300 hover:bg-gray-700 hover:text-white"
+      : "bg-white text-gray-700 hover:bg-gray-100 shadow-md";
+  };
+
+  const getControlBg = () => {
+    return theme === "dark"
+      ? "bg-gray-800 hover:bg-gray-700"
+      : "bg-white/80 backdrop-blur-sm hover:bg-white";
+  };
+
+  const getCardBg = () => {
+    return theme === "dark" ? "bg-gray-800 hover:bg-gray-750" : "bg-white";
+  };
+
+  const getModalBg = () => {
+    return theme === "dark" ? "bg-gray-900" : "bg-white";
+  };
+
+  const getTagBg = () => {
+    return theme === "dark"
+      ? "bg-gray-700 text-gray-300"
+      : "bg-gray-100 text-gray-700";
+  };
+
+  const getModalTagBg = () => {
+    return theme === "dark"
+      ? "bg-blue-900/50 text-blue-300"
+      : "bg-blue-100 text-blue-800";
+  };
+
   return (
     <section
       id="projects"
-      className="py-20 bg-gradient-to-br from-gray-50 to-blue-50"
+      className={`py-20 ${getSectionBg()} transition-all duration-500`}
     >
       <div className="max-w-7xl mx-auto px-6">
         {/* 헤더 */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          <h2
+            className={`text-4xl md:text-5xl font-bold ${getTextPrimary()} mb-4 transition-colors duration-300`}
+          >
             Featured <span className="text-blue-600">Projects</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p
+            className={`text-xl ${getTextSecondary()} max-w-2xl mx-auto transition-colors duration-300`}
+          >
             기획부터 개발까지, 창의적 아이디어가 현실이 되는 과정을 소개합니다.
           </p>
         </div>
@@ -227,7 +275,7 @@ export default function ProjectsGallery() {
               className={`flex items-center space-x-2 px-6 py-3 rounded-full font-medium transition-all duration-300 hover:scale-105 ${
                 activeCategory === category.name
                   ? `${category.color} text-white shadow-lg transform scale-105`
-                  : "bg-white text-gray-700 hover:bg-gray-100 shadow-md"
+                  : getCategoryBg(false)
               }`}
             >
               {typeof category.icon === "string" ? (
@@ -246,14 +294,26 @@ export default function ProjectsGallery() {
           <div className="flex justify-center mb-6">
             <button
               onClick={() => setIsAutoPlaying(!isAutoPlaying)}
-              className="flex items-center space-x-2 bg-white px-4 py-2 rounded-full shadow-md hover:shadow-lg transition-all"
+              className={`flex items-center space-x-2 ${getControlBg()} px-4 py-2 rounded-full shadow-md hover:shadow-lg transition-all`}
             >
               {isAutoPlaying ? (
-                <Pause className="w-4 h-4 text-gray-600" />
+                <Pause
+                  className={`w-4 h-4 ${
+                    theme === "dark" ? "text-gray-300" : "text-gray-600"
+                  }`}
+                />
               ) : (
-                <Play className="w-4 h-4 text-gray-600" />
+                <Play
+                  className={`w-4 h-4 ${
+                    theme === "dark" ? "text-gray-300" : "text-gray-600"
+                  }`}
+                />
               )}
-              <span className="text-sm text-gray-600">
+              <span
+                className={`text-sm ${
+                  theme === "dark" ? "text-gray-300" : "text-gray-600"
+                }`}
+              >
                 {isAutoPlaying ? "일시정지" : "자동재생"}
               </span>
             </button>
@@ -276,7 +336,7 @@ export default function ProjectsGallery() {
                   >
                     {/* 배경 이미지 */}
                     <div
-                      className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                      className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110 bg-gray-300"
                       style={{ backgroundImage: `url(${project.image})` }}
                     />
 
@@ -331,16 +391,24 @@ export default function ProjectsGallery() {
           {/* 네비게이션 화살표 */}
           <button
             onClick={prevSlide}
-            className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 backdrop-blur-sm p-3 rounded-full shadow-lg hover:bg-white transition-all hover:scale-110"
+            className={`absolute left-4 top-1/2 -translate-y-1/2 ${getControlBg()} p-3 rounded-full shadow-lg transition-all hover:scale-110`}
           >
-            <ChevronLeft className="w-6 h-6 text-gray-800" />
+            <ChevronLeft
+              className={`w-6 h-6 ${
+                theme === "dark" ? "text-gray-300" : "text-gray-800"
+              }`}
+            />
           </button>
 
           <button
             onClick={nextSlide}
-            className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 backdrop-blur-sm p-3 rounded-full shadow-lg hover:bg-white transition-all hover:scale-110"
+            className={`absolute right-4 top-1/2 -translate-y-1/2 ${getControlBg()} p-3 rounded-full shadow-lg transition-all hover:scale-110`}
           >
-            <ChevronRight className="w-6 h-6 text-gray-800" />
+            <ChevronRight
+              className={`w-6 h-6 ${
+                theme === "dark" ? "text-gray-300" : "text-gray-800"
+              }`}
+            />
           </button>
 
           {/* 인디케이터 */}
@@ -352,7 +420,11 @@ export default function ProjectsGallery() {
                 className={`w-3 h-3 rounded-full transition-all duration-300 ${
                   index === currentSlide
                     ? "bg-blue-600 w-8"
-                    : "bg-gray-300 hover:bg-gray-400"
+                    : `${
+                        theme === "dark"
+                          ? "bg-gray-600 hover:bg-gray-500"
+                          : "bg-gray-300 hover:bg-gray-400"
+                      }`
                 }`}
               />
             ))}
@@ -364,12 +436,12 @@ export default function ProjectsGallery() {
           {filteredProjects.slice(0, 6).map((project, index) => (
             <div
               key={project.id}
-              className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer"
+              className={`group ${getCardBg()} rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer`}
               onClick={() => openModal(project)}
             >
               <div className="relative h-48 overflow-hidden">
                 <div
-                  className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                  className="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110 bg-gray-300"
                   style={{ backgroundImage: `url(${project.image})` }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -381,10 +453,14 @@ export default function ProjectsGallery() {
               </div>
 
               <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
+                <h3
+                  className={`text-xl font-bold ${getTextPrimary()} mb-3 group-hover:text-blue-600 transition-colors`}
+                >
                   {project.title}
                 </h3>
-                <p className="text-gray-600 mb-4 line-clamp-2">
+                <p
+                  className={`${getTextSecondary()} mb-4 line-clamp-2 transition-colors duration-300`}
+                >
                   {project.description}
                 </p>
                 <div className="flex flex-wrap gap-2">
@@ -393,7 +469,7 @@ export default function ProjectsGallery() {
                     .map((tag: string, tagIndex: number) => (
                       <span
                         key={tagIndex}
-                        className="bg-gray-100 text-gray-700 px-2 py-1 rounded-lg text-xs"
+                        className={`${getTagBg()} px-2 py-1 rounded-lg text-xs transition-colors duration-300`}
                       >
                         {tag}
                       </span>
@@ -408,11 +484,13 @@ export default function ProjectsGallery() {
       {/* 모달 */}
       {selectedProject && (
         <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+          <div
+            className={`${getModalBg()} rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-y-auto transition-colors duration-300`}
+          >
             {/* 모달 헤더 */}
             <div className="relative h-64 md:h-80">
               <div
-                className="w-full h-full bg-cover bg-center"
+                className="w-full h-full bg-cover bg-center bg-gray-300"
                 style={{ backgroundImage: `url(${selectedProject.image})` }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
@@ -440,46 +518,80 @@ export default function ProjectsGallery() {
               {/* 프로젝트 정보 */}
               <div className="grid md:grid-cols-3 gap-6 mb-8">
                 <div>
-                  <h4 className="font-semibold text-gray-900 mb-2">
+                  <h4
+                    className={`font-semibold ${getTextPrimary()} mb-2 transition-colors duration-300`}
+                  >
                     클라이언트
                   </h4>
-                  <p className="text-gray-600">{selectedProject.client}</p>
+                  <p
+                    className={`${getTextSecondary()} transition-colors duration-300`}
+                  >
+                    {selectedProject.client}
+                  </p>
                 </div>
                 <div>
-                  <h4 className="font-semibold text-gray-900 mb-2">기간</h4>
-                  <p className="text-gray-600">{selectedProject.duration}</p>
+                  <h4
+                    className={`font-semibold ${getTextPrimary()} mb-2 transition-colors duration-300`}
+                  >
+                    기간
+                  </h4>
+                  <p
+                    className={`${getTextSecondary()} transition-colors duration-300`}
+                  >
+                    {selectedProject.duration}
+                  </p>
                 </div>
                 <div>
-                  <h4 className="font-semibold text-gray-900 mb-2">년도</h4>
-                  <p className="text-gray-600">{selectedProject.year}</p>
+                  <h4
+                    className={`font-semibold ${getTextPrimary()} mb-2 transition-colors duration-300`}
+                  >
+                    년도
+                  </h4>
+                  <p
+                    className={`${getTextSecondary()} transition-colors duration-300`}
+                  >
+                    {selectedProject.year}
+                  </p>
                 </div>
               </div>
 
               {/* 프로젝트 세부사항 */}
               <div className="space-y-6 mb-8">
                 <div>
-                  <h4 className="text-lg font-semibold text-gray-900 mb-3">
+                  <h4
+                    className={`text-lg font-semibold ${getTextPrimary()} mb-3 transition-colors duration-300`}
+                  >
                     🎯 도전과제
                   </h4>
-                  <p className="text-gray-700 leading-relaxed">
+                  <p
+                    className={`${getTextSecondary()} leading-relaxed transition-colors duration-300`}
+                  >
                     {selectedProject.challenge}
                   </p>
                 </div>
 
                 <div>
-                  <h4 className="text-lg font-semibold text-gray-900 mb-3">
+                  <h4
+                    className={`text-lg font-semibold ${getTextPrimary()} mb-3 transition-colors duration-300`}
+                  >
                     💡 솔루션
                   </h4>
-                  <p className="text-gray-700 leading-relaxed">
+                  <p
+                    className={`${getTextSecondary()} leading-relaxed transition-colors duration-300`}
+                  >
                     {selectedProject.solution}
                   </p>
                 </div>
 
                 <div>
-                  <h4 className="text-lg font-semibold text-gray-900 mb-3">
+                  <h4
+                    className={`text-lg font-semibold ${getTextPrimary()} mb-3 transition-colors duration-300`}
+                  >
                     📈 결과
                   </h4>
-                  <p className="text-gray-700 leading-relaxed">
+                  <p
+                    className={`${getTextSecondary()} leading-relaxed transition-colors duration-300`}
+                  >
                     {selectedProject.result}
                   </p>
                 </div>
@@ -487,14 +599,16 @@ export default function ProjectsGallery() {
 
               {/* 태그 */}
               <div className="mb-8">
-                <h4 className="text-lg font-semibold text-gray-900 mb-3">
+                <h4
+                  className={`text-lg font-semibold ${getTextPrimary()} mb-3 transition-colors duration-300`}
+                >
                   기술 스택 & 도구
                 </h4>
                 <div className="flex flex-wrap gap-2">
                   {selectedProject.tags.map((tag: string, index: number) => (
                     <span
                       key={index}
-                      className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm"
+                      className={`${getModalTagBg()} px-3 py-1 rounded-full text-sm transition-colors duration-300`}
                     >
                       {tag}
                     </span>
@@ -513,7 +627,11 @@ export default function ProjectsGallery() {
                 </a>
                 <a
                   href={selectedProject.githubUrl}
-                  className="flex items-center justify-center space-x-2 bg-gray-800 text-white px-6 py-3 rounded-xl font-medium hover:bg-gray-900 transition-all hover:scale-105"
+                  className={`flex items-center justify-center space-x-2 ${
+                    theme === "dark"
+                      ? "bg-gray-700 hover:bg-gray-600"
+                      : "bg-gray-800 hover:bg-gray-900"
+                  } text-white px-6 py-3 rounded-xl font-medium transition-all hover:scale-105`}
                 >
                   <Github className="w-5 h-5" />
                   <span>소스 코드</span>
