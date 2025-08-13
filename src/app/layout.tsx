@@ -24,10 +24,55 @@ export const metadata: Metadata = {
   authors: [{ name: "doomock" }],
   creator: "doomock",
 
-  // 파비콘
   icons: {
-    icon: "/favicon.ico",
+    // 메인 파비콘들 (우선순위 순서로 배치)
+    icon: [
+      {
+        url: "/favicon.svg",
+        type: "image/svg+xml",
+        sizes: "any",
+      },
+      {
+        url: "/favicon.ico",
+        type: "image/x-icon",
+        sizes: "16x16 32x32",
+      },
+      {
+        url: "/favicon-96x96.png",
+        type: "image/png",
+        sizes: "96x96",
+      },
+    ],
+
+    // Apple 기기용 터치 아이콘
+    apple: [
+      {
+        url: "/apple-touch-icon.png",
+        sizes: "180x180",
+        type: "image/png",
+      },
+    ],
+
+    // 다양한 크기의 아이콘들
+    other: [
+      // PWA/Android 크롬용
+      {
+        rel: "icon",
+        type: "image/png",
+        sizes: "192x192",
+        url: "/web-app-manifest-192x192.png",
+      },
+      {
+        rel: "icon",
+        type: "image/png",
+        sizes: "512x512",
+        url: "/web-app-manifest-512x512.png",
+      },
+    ],
   },
+
+  // PWA 매니페스트 연결
+  manifest: "/site.webmanifest",
 
   // Open Graph
   openGraph: {
